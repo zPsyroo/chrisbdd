@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="top-bar">
+    <h1>📅 Citas</h1>
+    <a href="/citas/nuevo" class="btn btn-green">+ Nueva Cita</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Motivo</th>
+            <th>Animal</th>
+            <th>Veterinario</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in citas %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.fecha }}</td>
+            <td>{{ c.motivo or '-' }}</td>
+            <td>{{ c.animal_nombre or 'Sin animal' }}</td>
+            <td>{{ c.veterinario_nombre or 'Sin veterinario' }}</td>
+            <td class="acciones">
+                <a href="/citas/editar/{{ c.id }}" class="btn btn-blue">Editar</a>
+                <a href="/citas/borrar/{{ c.id }}" class="btn btn-red" onclick="return confirm('¿Borrar cita?')">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

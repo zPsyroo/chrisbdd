@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ '✏️ Editar Veterinario' if veterinario else '➕ Nuevo Veterinario' }}</h1>
+<br>
+<form method="POST">
+    <label>Nombre</label>
+    <input type="text" name="nombre" value="{{ veterinario.nombre if veterinario else '' }}" required>
+    <label>Especialidad</label>
+    <input type="text" name="especialidad" value="{{ veterinario.especialidad if veterinario else '' }}" placeholder="Opcional">
+    <label>Teléfono</label>
+    <input type="text" name="telefono" value="{{ veterinario.telefono if veterinario else '' }}" placeholder="Opcional">
+    <div class="form-btns">
+        <button type="submit" class="btn btn-green">💾 Guardar</button>
+        <a href="/veterinarios" class="btn btn-red">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

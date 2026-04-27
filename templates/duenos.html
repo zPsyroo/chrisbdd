@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="top-bar">
+    <h1>👤 Dueños</h1>
+    <a href="/duenos/nuevo" class="btn btn-green">+ Nuevo Dueño</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for d in duenos %}
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.nombre }}</td>
+            <td>{{ d.telefono }}</td>
+            <td>{{ d.email or '-' }}</td>
+            <td class="acciones">
+                <a href="/duenos/editar/{{ d.id }}" class="btn btn-blue">Editar</a>
+                <a href="/duenos/borrar/{{ d.id }}" class="btn btn-red" onclick="return confirm('¿Borrar dueño?')">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

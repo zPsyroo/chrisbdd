@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Veterinaria</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f0f4f8; color: #333; }
+        nav {
+            background: #2c7a4b;
+            padding: 14px 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        nav a:hover { text-decoration: underline; }
+        nav .titulo { font-size: 20px; margin-right: auto; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        h1 { margin-bottom: 20px; color: #2c7a4b; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        th { background: #2c7a4b; color: white; padding: 12px 15px; text-align: left; }
+        td { padding: 11px 15px; border-bottom: 1px solid #eee; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #f9f9f9; }
+        .btn {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-green { background: #2c7a4b; color: white; }
+        .btn-blue { background: #3a7bd5; color: white; }
+        .btn-red { background: #d9534f; color: white; }
+        .btn:hover { opacity: 0.85; }
+        .acciones { display: flex; gap: 8px; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input, select {
+            width: 100%;
+            padding: 9px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input:focus, select:focus { outline: none; border-color: #2c7a4b; }
+        .form-btns { display: flex; gap: 10px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <span class="titulo">🐾 Clínica Veterinaria</span>
+        <a href="/animales">Animales</a>
+        <a href="/duenos">Dueños</a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

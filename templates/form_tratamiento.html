@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ '✏️ Editar Tratamiento' if tratamiento else '➕ Nuevo Tratamiento' }}</h1>
+<br>
+<form method="POST">
+    <label>Descripción</label>
+    <input type="text" name="descripcion" value="{{ tratamiento.descripcion if tratamiento else '' }}" required>
+    <label>Medicamento</label>
+    <input type="text" name="medicamento" value="{{ tratamiento.medicamento if tratamiento else '' }}" placeholder="Opcional">
+    <label>Dosis</label>
+    <input type="text" name="dosis" value="{{ tratamiento.dosis if tratamiento else '' }}" placeholder="Opcional">
+    <label>Cita</label>
+    <select name="cita_id">
+        <option value="">Sin cita</option>
+        {% for c in citas %}
+        <option value="{{ c.id }}" {{ 'selected' if tratamiento and tratamiento.cita_id == c.id else '' }}>{{ c.id }} - {{ c.motivo }}</option>
+        {% endfor %}
+    </select>
+    <div class="form-btns">
+        <button type="submit" class="btn btn-green">💾 Guardar</button>
+        <a href="/tratamientos" class="btn btn-red">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

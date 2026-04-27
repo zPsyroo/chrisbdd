@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="top-bar">
+    <h1>👨‍⚕️ Veterinarios</h1>
+    <a href="/veterinarios/nuevo" class="btn btn-green">+ Nuevo Veterinario</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for v in veterinarios %}
+        <tr>
+            <td>{{ v.id }}</td>
+            <td>{{ v.nombre }}</td>
+            <td>{{ v.especialidad or '-' }}</td>
+            <td>{{ v.telefono or '-' }}</td>
+            <td class="acciones">
+                <a href="/veterinarios/editar/{{ v.id }}" class="btn btn-blue">Editar</a>
+                <a href="/veterinarios/borrar/{{ v.id }}" class="btn btn-red" onclick="return confirm('¿Borrar veterinario?')">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

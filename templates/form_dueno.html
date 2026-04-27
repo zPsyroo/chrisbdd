@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ '✏️ Editar Dueño' if dueno else '➕ Nuevo Dueño' }}</h1>
+<br>
+<form method="POST">
+    <label>Nombre</label>
+    <input type="text" name="nombre" value="{{ dueno.nombre if dueno else '' }}" required>
+
+    <label>Teléfono</label>
+    <input type="text" name="telefono" value="{{ dueno.telefono if dueno else '' }}" required>
+
+    <label>Email</label>
+    <input type="email" name="email" value="{{ dueno.email if dueno else '' }}" placeholder="Opcional">
+
+    <div class="form-btns">
+        <button type="submit" class="btn btn-green">💾 Guardar</button>
+        <a href="/duenos" class="btn btn-red">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

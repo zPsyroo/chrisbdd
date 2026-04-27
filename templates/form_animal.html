@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ '✏️ Editar Animal' if animal else '➕ Nuevo Animal' }}</h1>
+<br>
+<form method="POST">
+    <label>Nombre</label>
+    <input type="text" name="nombre" value="{{ animal.nombre if animal else '' }}" required>
+
+    <label>Especie</label>
+    <input type="text" name="especie" value="{{ animal.especie if animal else '' }}" required placeholder="Perro, Gato, Conejo...">
+
+    <label>Raza</label>
+    <input type="text" name="raza" value="{{ animal.raza if animal else '' }}" placeholder="Opcional">
+
+    <label>Edad (años)</label>
+    <input type="number" name="edad" value="{{ animal.edad if animal else '' }}" min="0" placeholder="Opcional">
+
+    <label>Dueño</label>
+    <select name="dueno_id">
+        <option value="">Sin dueño</option>
+        {% for d in duenos %}
+        <option value="{{ d.id }}" {{ 'selected' if animal and animal.dueno_id == d.id else '' }}>
+            {{ d.nombre }}
+        </option>
+        {% endfor %}
+    </select>
+
+    <div class="form-btns">
+        <button type="submit" class="btn btn-green">💾 Guardar</button>
+        <a href="/animales" class="btn btn-red">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

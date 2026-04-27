@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ '✏️ Editar Cita' if cita else '➕ Nueva Cita' }}</h1>
+<br>
+<form method="POST">
+    <label>Fecha</label>
+    <input type="date" name="fecha" value="{{ cita.fecha if cita else '' }}" required>
+    <label>Motivo</label>
+    <input type="text" name="motivo" value="{{ cita.motivo if cita else '' }}" placeholder="Opcional">
+    <label>Animal</label>
+    <select name="animal_id">
+        <option value="">Sin animal</option>
+        {% for a in animales %}
+        <option value="{{ a.id }}" {{ 'selected' if cita and cita.animal_id == a.id else '' }}>{{ a.nombre }}</option>
+        {% endfor %}
+    </select>
+    <label>Veterinario</label>
+    <select name="veterinario_id">
+        <option value="">Sin veterinario</option>
+        {% for v in veterinarios %}
+        <option value="{{ v.id }}" {{ 'selected' if cita and cita.veterinario_id == v.id else '' }}>{{ v.nombre }}</option>
+        {% endfor %}
+    </select>
+    <div class="form-btns">
+        <button type="submit" class="btn btn-green">💾 Guardar</button>
+        <a href="/citas" class="btn btn-red">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

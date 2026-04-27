@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="top-bar">
+    <h1>🐶 Animales</h1>
+    <a href="/animales/nuevo" class="btn btn-green">+ Nuevo Animal</a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Dueño</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in animales %}
+        <tr>
+            <td>{{ a.id }}</td>
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.especie }}</td>
+            <td>{{ a.raza or '-' }}</td>
+            <td>{{ a.edad or '-' }} años</td>
+            <td>{{ a.dueno_nombre or 'Sin dueño' }}</td>
+            <td class="acciones">
+                <a href="/animales/editar/{{ a.id }}" class="btn btn-blue">Editar</a>
+                <a href="/animales/borrar/{{ a.id }}" class="btn btn-red" onclick="return confirm('¿Borrar animal?')">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
